@@ -276,6 +276,9 @@ class Ofx
      */
     private function createAmountFromStr($amountString)
     {
+        
+        if (strpos($amountString, '.') === FALSE && strpos($amountString, ',') === FALSE) { $amountString .= ".00"; }
+        
         //000.00 or 0,000.00
         if (preg_match("/^-?([0-9,]+)(\.?)([0-9]{2})$/", $amountString) == 1) {
             $amountString = preg_replace(
